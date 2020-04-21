@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/tracker",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

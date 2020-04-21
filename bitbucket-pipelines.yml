@@ -1,0 +1,21 @@
+# This is a sample build configuration for Other.
+# Check our guides at https://confluence.atlassian.com/x/5Q4SMw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: node:12.16.1
+
+pipelines:
+ default:
+   - step:
+       name: Prod
+       caches:
+         - node
+       script:
+         - npm install
+         - npm run build:prod
+         - pipe: atlassian/firebase-deploy:0.3.0
+           variables:
+             FIREBASE_TOKEN: '$FIREBASE_TOKEN_CI'
+          
+          

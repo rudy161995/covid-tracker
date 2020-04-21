@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="row pt-4 center_items">
+    <!-- <div class="col-12"> -->
+    <div class="col-12">
+      <span style="font-size: 31px !important;font-weight: 500;position: relative;left: 235px;">Coronavirus
+        (COVID-19) Statistics({{country}})</span>
+    </div>
+    <div class="card">
+      <div class="card-header bg-warning" align="center">
+        Total Confirmed Cases
+      </div>
+      <div class="card-body">
+        <h5 align="center" class="card-title">{{totalConfirmed | number}}</h5>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header bg-secondary" align="center">
+        Total Death Cases
+      </div>
+      <div class="card-body">
+        <h5 align="center" class="card-title">{{totalDeaths| number}}</h5>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header bg-success" align="center">
+        Total Recovered Cases
+      </div>
+      <div class="card-body">
+        <h5 align="center" class="card-title">{{totalRecovered| number}}</h5>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" style="background-color: #fc4103;" align="center">
+        Total Critical Cases
+      </div>
+      <div class="card-body">
+        <h5 align="center" class="card-title">{{totalCritical| number}}</h5>
+      </div>
+    </div>
+    <!-- </div> -->
+  </div>
+
+  <div class="row pt-4 center_items">
+    <div class="col-2" style="left: 60px;top: 8px">
+      <label for="c">Select Country</label>
+    </div>
+    <div class="col-4">
+      <select name="" class="form-control" id="c" #input (change)='updateValues(input.value)'>
+        <option [value]="con.code" *ngFor='let con of countries'>{{con.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row pt-4">
+    <div class="col-12">
+      <span style="font-size: 26px !important;font-weight: 500;position: relative;left: 235px;">Coronavirus
+        (COVID-19) Graph({{country}})</span>
+    </div>
+    <div class="col">
+      <div id="chart">
+        <apx-chart *ngIf="showChart" [series]="chartOptions.series" [chart]="chartOptions.chart"
+          [yaxis]="chartOptions.yaxis" [xaxis]="chartOptions.xaxis" [labels]="chartOptions.labels"
+          [stroke]="chartOptions.stroke" [plotOptions]="chartOptions.plotOptions" [markers]="chartOptions.markers"
+          [fill]="chartOptions.fill" [tooltip]="chartOptions.tooltip"></apx-chart>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row pt-4 center_items">
+        <div>
+          <div class="card">
+            <div class="card-header bg-warning" align="center">
+              Today's Confirmed Cases
+            </div>
+            <div class="card-body">
+              <h5 align="center" class="card-title">{{todayConfirmed| number}}</h5>
+            </div>
+          </div>
+        </div>
+        <div>
+
+        </div>
+        <div>
+          <div class="card">
+            <div class="card-header bg-secondary" align="center">
+              Today's Death Cases
+            </div>
+            <div class="card-body">
+              <h5 align="center" class="card-title">{{todayDeaths| number}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="row pt-4 center_items">
+    <div class="col-12">
+      <span style="font-size: 31px !important;font-weight: 500;position: relative;left: 235px;">Coronavirus (COVID-19)
+        Statistics (Global)</span>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-header bg-warning" align="center">
+          Total Confirmed Cases
+        </div>
+        <div class="card-body">
+          <h5 align="center" class="card-title">{{countryData['confirmed'] | number}}</h5>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-header bg-success" align="center">
+          Total Recovered Cases
+        </div>
+        <div class="card-body">
+          <h5 align="center" class="card-title">{{countryData['recovered'] | number }}</h5>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-header bg-secondary" align="center">
+          Total Death Cases
+        </div>
+        <div class="card-body">
+          <h5 align="center" class="card-title">{{countryData['deaths'] | number}}</h5>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-header" align="center" style="background-color: #fc4103;">
+          Total Critical cases
+        </div>
+        <div class="card-body">
+          <h5 align="center" class="card-title">{{countryData['critical'] | number}}</h5>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-header" align="center" style="background-color:#fc7b03">
+          Total Active cases
+        </div>
+        <div class="card-body">
+          <h5 align="center" class="card-title">{{countryData['active'] | number}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row pt-3 center_items">
+    <div class="col-4">
+      <apx-chart [series]="chart1options.series" [chart]="chart1options.chart" [colors]="chart1options.colors"
+        [yaxis]="chart1options.yaxis" [dataLabels]="commonOptions.dataLabels" [markers]="commonOptions.markers"
+        [stroke]="commonOptions.stroke" [grid]="commonOptions.grid" [xaxis]="commonOptions.xaxis"
+        [tooltip]="commonOptions.tooltip"></apx-chart>
+      <div>Confirmed cases</div>
+    </div>
+    <div class="col-4 pl-4">
+      <apx-chart [series]="chart2options.series" [chart]="chart2options.chart" [colors]="chart2options.colors"
+        [yaxis]="chart2options.yaxis" [dataLabels]="commonOptions.dataLabels" [markers]="commonOptions.markers"
+        [stroke]="commonOptions.stroke" [grid]="commonOptions.grid" [xaxis]="commonOptions.xaxis"
+        [tooltip]="commonOptions.tooltip"></apx-chart>
+      <div>Recovered cases</div>
+    </div>
+    <div class="col-4 pl-5">
+      <apx-chart [series]="chart3options.series" [chart]="chart3options.chart" [colors]="chart3options.colors"
+        [yaxis]="chart3options.yaxis" [dataLabels]="commonOptions.dataLabels" [markers]="commonOptions.markers"
+        [stroke]="commonOptions.stroke" [grid]="commonOptions.grid" [xaxis]="commonOptions.xaxis"
+        [tooltip]="commonOptions.tooltip"></apx-chart>
+      <div>Death cases</div>
+    </div>
+
+  </div>
+  <div class="row pt-4 center_items">
+    <div class="col-12">
+      <span style="font-size: 31px !important;font-weight: 500;position: relative;left: 300px;">Today's Statistics
+        (Global)</span>
+      <span style="position: relative;left: 300px;">as of {{dailyData[0]['updated_at']}}</span>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-header bg-warning" align="center">
+          Today's Confirmed Cases
+        </div>
+        <div class="card-body">
+          <h5 align="center" class="card-title">{{dailyData[0]['new_confirmed'] | number}}</h5>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-header bg-success" align="center">
+          Today's Recovered Cases
+        </div>
+        <div class="card-body">
+          <h5 align="center" class="card-title">{{dailyData[0]['new_recovered'] | number }}</h5>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-header bg-secondary" align="center">
+          Today's Death Cases
+        </div>
+        <div class="card-body">
+          <h5 align="center" class="card-title">{{dailyData[0]['new_deaths'] | number}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row pt-3 center_items">
+    <highcharts-chart [Highcharts]="HC" [constructorType]="chartConstructor" [options]="chartOptions"
+      [callbackFunction]="chartCallback" [(update)]="updateFlag" [oneToOne]="true"
+      style="width: 935px; height: 400px; display: block;"></highcharts-chart>
+  </div>
+</div>
